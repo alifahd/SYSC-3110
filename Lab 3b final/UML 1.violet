@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15" class="java.beans.XMLDecoder">
+ <object class="com.horstmann.violet.ClassDiagramGraph">
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode0">
+    <void property="attributes">
+     <void property="text">
+      <string>-name: String
+-name: Date</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+getName(): String
++proctor(date: Date): void
++postpone(date: Date): void</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>TeachingAssistant</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double0">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double0"/>
+      <double>580.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double0"/>
+      <double>280.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>580.0</double>
+     <double>280.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode1">
+    <void property="attributes">
+     <void property="text">
+      <string>-name: String
+-midterm: Date</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+getName(): String
++study(date Date): void
++party(date Date): void</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Student</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double1">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double1"/>
+      <double>110.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double1"/>
+      <double>280.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>110.0</double>
+     <double>280.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode2">
+    <void property="attributes">
+     <void property="text">
+      <string>-name: String
+-midtermDate: Date
+-students: ArrayList&lt;Student&gt;;
+-ta: TeachingAssistant;</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>+getMidterm(): Date
++getName(): String
++setMidterm(date: Date): void
++postponeMidterm(date Date): void
++setTA(theTA: TeachingAssistant): void
++addStudent(s: Student): void</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Prof</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double2">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double2"/>
+      <double>340.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double2"/>
+      <double>40.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>340.0</double>
+     <double>40.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="connect">
+   <object class="com.horstmann.violet.ClassRelationshipEdge">
+    <void property="endArrowHead">
+     <object class="com.horstmann.violet.ArrowHead" field="V"/>
+    </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
+   </object>
+   <object idref="ClassNode2"/>
+   <object idref="ClassNode1"/>
+  </void>
+  <void method="connect">
+   <object class="com.horstmann.violet.ClassRelationshipEdge">
+    <void property="endArrowHead">
+     <object class="com.horstmann.violet.ArrowHead" field="V"/>
+    </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
+   </object>
+   <object idref="ClassNode2"/>
+   <object idref="ClassNode0"/>
+  </void>
+ </object>
+</java>

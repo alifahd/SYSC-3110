@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project name="AddressBook" default="compile">
+    <target name="compile">
+        <mkdir dir="${basedir}/build/classes" />
+        <javac srcdir="src" destdir="build/classes" />
+    </target>
+    <target name="packaging" depends="compile">
+        <mkdir dir="build/jar" />
+        <jar destfile="build/jar/lab9.jar" basedir="build/classes" >
+            <manifest>
+                <attribute name="Main-Class" value="menu" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/lab9.jar" fork="true" />
+    </target>
+</project>

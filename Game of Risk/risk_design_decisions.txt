@@ -1,0 +1,39 @@
+From the last milestone there were a few design flaws that needed to be fixed. Firstly, the attack method in model and the actionPerformed method
+in controller were too lengthy with too many responsibilities, so they needed to be broken up into smaller methods. For the attack method, we
+broke it up into a method to roll the dice for each player, a method to implement just the attack mechanism, a method to handle the result
+of the attack, and a method to check for an overall winner of the game. The original attack method now calls each of these methods to achieve
+the full attacking functionality. For the actionPerformed method, there is now a separate method for each type of button that can be clicked,
+and actionPerformed simply determines which method to call. Therefore, there are now cancel, pass, fortify, and countryAction methods in
+Controller. The countryAction method determines which state the game is in to decide what to do, so it is possible to make extra methods for
+each possible action, but we decided that countryAction's responsibilities were not large enough to need these extra methods.
+
+The second flaw that we had was the model and view classes being too tightly coupled which was exposed by some difficulties trying to smoothly
+test the model class. The methods we designed to implement the major features of Risk included updating the view before the end of the method,
+and these updates would show a dialog box. Therefore when testing the model we could not avoid having dialog boxes appear when running the tests.
+By breaking up the methods into smaller methods that isolated the mechanism to be tested as mentioned above, we were able to change the tests to
+test these isolated mechanisms instead, so the dialog boxes did not appear anymore. This refactoring also allows the view updates to be avoided,
+so the model and view classes are not tightly coupled anymore.
+
+The last flaw that needed to be fixed was a missing feature in the MVC pattern, specifically, we were missing the observer pattern that is a part
+of the MVC pattern. Instead of having a list of views in model that implemented a view interface, our model stored one regular view without an
+interface. We were also missing the Event class used to package information to be passed from the model to the view when it needed to be updated.
+To fix this flaw, we created an interface that included all the methods the view needed to override, added a list of objects in model that implemented
+the new interface, and created an Event class that replaced the old parameters of the methods in the interface. With these changes, our project fully
+follows the MVC pattern.
+
+With the addition of custom maps in this milestone, we needed to decide how to store and import the custom maps. Between json and xml, we had more
+experience with xml, so we decided to use xml to store map information and use a saxparser to parse the xml file. This brought attention to our
+map design, specifically the continent design. Since the bonus troops for each continent was hardcoded, we were able to use an array list of countries
+to represent a continent, but with a custom map the bonus troop value is unknown. Therefore, we moved the array list for a continent into a continent class
+that also stored its bonus troop value. This made the design of the xml file easier, having a continent tag with its bonus troops as an attribute,
+and then all of its countries inside the tag as their own tags. Inside each country tag there were attributes needed to construct the country object,
+and then a list of neighbour tags inside the country tag. The country tags also had the attributes needed to construct a country object. There is also
+an image tag with the name of the file at the end of the xml file that stores the image of the map. With this structure for the xml file, the saxparser
+was easy to use to create a new map object.
+
+For the save and load features, we implemented as such that the user can select whether or not they want to load a game right when they launch the program.
+They would then be prompted for a text file which would be in xml format and hold all the required information from the incomplete game which would've been
+stored in its proper format via the save option. Again, we decided to use xml to store game information and use a saxparser to parse the xml file. If the 
+user selected to load a file, the file would orignally be checked to see if it was played on a custom map, this is our initialParse. This was necessary so
+that depending on what the custom value was the proper model constructor would be called and the game would resume as normal at the correct phase and player 
+the game left off at.
